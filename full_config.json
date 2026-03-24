@@ -1,0 +1,82 @@
+{
+    "compilerOptions": {
+        "allowJs": true,
+        "esModuleInterop": true,
+        "jsx": "react-native",
+        "lib": [
+            "dom",
+            "esnext"
+        ],
+        "module": "preserve",
+        "moduleDetection": "force",
+        "moduleResolution": "bundler",
+        "customConditions": [
+            "react-native"
+        ],
+        "noEmit": true,
+        "resolveJsonModule": true,
+        "skipLibCheck": true,
+        "target": "esnext",
+        "strict": true,
+        "importHelpers": true,
+        "paths": {
+            "@/*": [
+                "./*"
+            ]
+        },
+        "allowSyntheticDefaultImports": true,
+        "resolvePackageJsonExports": true,
+        "resolvePackageJsonImports": true,
+        "useDefineForClassFields": true,
+        "noImplicitAny": true,
+        "noImplicitThis": true,
+        "strictNullChecks": true,
+        "strictFunctionTypes": true,
+        "strictBindCallApply": true,
+        "strictPropertyInitialization": true,
+        "strictBuiltinIteratorReturn": true,
+        "alwaysStrict": true,
+        "useUnknownInCatchVariables": true
+    },
+    "files": [
+        "./expo-env.d.ts",
+        "./components/useClientOnlyValue.ts",
+        "./components/useClientOnlyValue.web.ts",
+        "./components/useColorScheme.ts",
+        "./components/useColorScheme.web.ts",
+        "./constants/Colors.ts",
+        "./src/constants/Theme.ts",
+        "./src/services/notifications.ts",
+        "./src/services/quotes/QuoteService.ts",
+        "./src/services/quotes/fallback.ts",
+        "./src/services/quotes/types.ts",
+        "./src/storage/storageHelper.ts",
+        "./app/+html.tsx",
+        "./app/+not-found.tsx",
+        "./app/_layout.tsx",
+        "./app/favorites.tsx",
+        "./app/index.tsx",
+        "./app/settings.tsx",
+        "./components/EditScreenInfo.tsx",
+        "./components/ExternalLink.tsx",
+        "./components/StyledText.tsx",
+        "./components/Themed.tsx",
+        "./src/components/ActionButtons.tsx",
+        "./src/components/QuoteDisplay.tsx",
+        "./.expo/types/router.d.ts"
+    ],
+    "include": [
+        "**/*.ts",
+        "**/*.tsx",
+        ".expo/types/**/*.ts",
+        "expo-env.d.ts"
+    ],
+    "exclude": [
+        "/Users/sebastianconte-grand/Quotes/node_modules",
+        "/Users/sebastianconte-grand/Quotes/babel.config.js",
+        "/Users/sebastianconte-grand/Quotes/metro.config.js",
+        "/Users/sebastianconte-grand/Quotes/jest.config.js",
+        "/Users/sebastianconte-grand/Quotes/android",
+        "/Users/sebastianconte-grand/Quotes/ios"
+    ]
+}
