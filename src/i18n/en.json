@@ -1,0 +1,33 @@
+{
+  "not_found": {
+    "title": "Oops!",
+    "message": "This screen doesn't exist.",
+    "link": "Go to home screen!"
+  },
+  "settings": {
+    "title": "Settings",
+    "notifications": "Daily Notifications",
+    "notifications_desc": "Get a new quote every morning at 9:00 AM",
+    "offline": "Offline Only Mode",
+    "offline_desc": "Disable API fetching and use the built-in cinematic quote database",
+    "language": "Language",
+    "language_desc": "Switch between English and Chinese",
+    "version": "Daily Screen Quote v1.0.0"
+  },
+  "home": {
+    "refresh": "Pull to refresh"
+  },
+  "favorites": {
+    "title": "Favorites",
+    "empty": "No favorites yet"
+  },
+  "common": {
+    "english": "English",
+    "chinese": "Chinese",
+    "unknown_source": "Unknown Source"
+  },
+  "types": {
+    "movie": "Movie",
+    "show": "TV Show"
+  }
+}

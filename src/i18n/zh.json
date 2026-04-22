@@ -1,0 +1,33 @@
+{
+  "not_found": {
+    "title": "哎呀！",
+    "message": "此页面不存在。",
+    "link": "返回主屏幕！"
+  },
+  "settings": {
+    "title": "设置",
+    "notifications": "每日通知",
+    "notifications_desc": "每天早上 9:00 收到一条新名言",
+    "offline": "仅离线模式",
+    "offline_desc": "禁用 API 获取，使用内置的电影名言数据库",
+    "language": "语言",
+    "language_desc": "在英文和中文之间切换",
+    "version": "每日屏幕名言 v1.0.0"
+  },
+  "home": {
+    "refresh": "下拉刷新"
+  },
+  "favorites": {
+    "title": "收藏",
+    "empty": "暂无收藏"
+  },
+  "common": {
+    "english": "英文",
+    "chinese": "中文",
+    "unknown_source": "未知来源"
+  },
+  "types": {
+    "movie": "电影",
+    "show": "电视剧"
+  }
+}

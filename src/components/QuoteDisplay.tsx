@@ -4,6 +4,7 @@ import { StyleSheet, Text, useColorScheme, View } from 'react-native';
 import { Easing } from 'react-native-reanimated';
 import { Theme, Typography } from '../constants/Theme';
 import { Quote } from '../services/quotes/QuoteService';
+import { useTranslation } from 'react-i18next';
 
 interface QuoteDisplayProps {
     quote: Quote | null;
@@ -13,6 +14,7 @@ interface QuoteDisplayProps {
 export const QuoteDisplay: React.FC<QuoteDisplayProps> = ({ quote, loading }) => {
     const colorScheme = useColorScheme();
     const colors = colorScheme === 'dark' ? Theme.dark : Theme.light;
+    const { t } = useTranslation();
 
     if (loading || !quote) {
         return (
@@ -33,6 +35,8 @@ export const QuoteDisplay: React.FC<QuoteDisplayProps> = ({ quote, loading }) =>
         );
     }
 
+    const typeKey = (quote.type || 'movie').toLowerCase();
+
     return (
         <MotiView
             from={{ opacity: 0, translateY: 10 }}
@@ -45,7 +49,7 @@ export const QuoteDisplay: React.FC<QuoteDisplayProps> = ({ quote, loading }) =>
             style={styles.container}
         >
             <Text style={[Typography.label, { color: colors.textSecondary, marginBottom: 8 }]}>
-                {quote.type || 'Movie'}
+                {t(`types.${typeKey}`)}
             </Text>
             <Text style={[Typography.quote, { color: colors.text }]}>
                 "{quote.quote}"

@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { Platform, StyleSheet, Switch, Text, useColorScheme, View } from 'react-native';
+import { Platform, StyleSheet, Switch, Text, useColorScheme, View, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Theme } from '../src/constants/Theme';
 import { notificationService } from '../src/services/notifications';
 import { storage, StorageKeys } from '../src/storage/storageHelper';
+import { useTranslation } from 'react-i18next';
 
 export default function SettingsScreen() {
+    const { t, i18n } = useTranslation();
     const [notificationsEnabled, setNotificationsEnabled] = useState(true);
     const [offlineOnly, setOfflineOnly] = useState(false);
     const colorScheme = useColorScheme();
@@ -36,6 +38,10 @@ export default function SettingsScreen() {
         await storage.save(StorageKeys.USE_OFFLINE_ONLY, value);
     };
 
+    const changeLanguage = (lang: string) => {
+        i18n.changeLanguage(lang);
+    };
+
     const SettingRow = ({ label, value, onToggle, description }: any) => (
         <View style={[styles.settingRow, { borderBottomColor: colors.border }]}>
             <View style={styles.settingInfo}>
@@ -51,25 +57,62 @@ export default function SettingsScreen() {
         </View>
     );
 
+    const LanguageToggle = () => (
+        <View style={[styles.settingRow, { borderBottomColor: colors.border }]}>
+            <View style={styles.settingInfo}>
+                <Text style={[styles.settingLabel, { color: colors.text }]}>{t('settings.language')}</Text>
+                <Text style={[styles.settingDescription, { color: colors.textSecondary }]}>{t('settings.language_desc')}</Text>
+            </View>
+            <View style={styles.languageToggleContainer}>
+                <TouchableOpacity 
+                    onPress={() => changeLanguage('en')}
+                    style={[
+                        styles.languageButton, 
+                        i18n.language === 'en' && { backgroundColor: '#007AFF' }
+                    ]}
+                >
+                    <Text style={[
+                        styles.languageButtonText, 
+                        { color: i18n.language === 'en' ? '#fff' : colors.textSecondary }
+                    ]}>EN</Text>
+                </TouchableOpacity>
+                <TouchableOpacity 
+                    onPress={() => changeLanguage('zh')}
+                    style={[
+                        styles.languageButton, 
+                        i18n.language === 'zh' && { backgroundColor: '#007AFF' }
+                    ]}
+                >
+                    <Text style={[
+                        styles.languageButtonText, 
+                        { color: i18n.language === 'zh' ? '#fff' : colors.textSecondary }
+                    ]}>ZH</Text>
+                </TouchableOpacity>
+            </View>
+        </View>
+    );
+
     return (
         <SafeAreaView style={[styles.container, { backgroundColor: colors.background }]}>
             <View style={styles.content}>
                 <SettingRow
-                    label="Daily Notifications"
-                    description="Get a new quote every morning at 9:00 AM"
+                    label={t('settings.notifications')}
+                    description={t('settings.notifications_desc')}
                     value={notificationsEnabled}
                     onToggle={toggleNotifications}
                 />
                 <SettingRow
-                    label="Offline Only Mode"
-                    description="Disable API fetching and use the built-in cinematic quote database"
+                    label={t('settings.offline')}
+                    description={t('settings.offline_desc')}
                     value={offlineOnly}
                     onToggle={toggleOffline}
                 />
+                
+                <LanguageToggle />
 
                 <View style={styles.footer}>
                     <Text style={[styles.footerText, { color: colors.textSecondary }]}>
-                        Daily Screen Quote v1.0.0
+                        {t('settings.version')}
                     </Text>
                 </View>
             </View>
@@ -113,5 +156,20 @@ const styles = StyleSheet.create({
         fontSize: 12,
         letterSpacing: 1,
         textTransform: 'uppercase',
+    },
+    languageToggleContainer: {
+        flexDirection: 'row',
+        backgroundColor: '#f0f0f0',
+        borderRadius: 8,
+        padding: 4,
+    },
+    languageButton: {
+        paddingHorizontal: 12,
+        paddingVertical: 6,
+        borderRadius: 6,
+    },
+    languageButtonText: {
+        fontSize: 13,
+        fontWeight: 'bold',
     }
 });

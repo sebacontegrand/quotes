@@ -1,6 +1,7 @@
 import { storage, StorageKeys } from '../../storage/storageHelper';
 import { FALLBACK_QUOTES } from './fallback';
 import { Quote, QuoteProvider } from './types';
+import i18n from '../../i18n';
 
 class ApiQuoteProvider implements QuoteProvider {
     // Using a stable random movie quote API
@@ -27,7 +28,7 @@ class ApiQuoteProvider implements QuoteProvider {
                 return {
                     id: Date.now().toString(),
                     quote: data.quote,
-                    movie: data.show || 'Unknown Source',
+                    movie: data.show || i18n.t('common.unknown_source'),
                     type: 'movie', // Defaulting to movie
                 };
             }

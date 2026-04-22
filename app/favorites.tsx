@@ -5,8 +5,10 @@ import { FlatList, StyleSheet, Text, TouchableOpacity, useColorScheme, View } fr
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Theme } from '../src/constants/Theme';
 import { Quote, quoteService } from '../src/services/quotes/QuoteService';
+import { useTranslation } from 'react-i18next';
 
 export default function FavoritesScreen() {
+    const { t } = useTranslation();
     const [favorites, setFavorites] = useState<Quote[]>([]);
     const colorScheme = useColorScheme();
     const colors = colorScheme === 'dark' ? Theme.dark : Theme.light;
@@ -51,7 +53,7 @@ export default function FavoritesScreen() {
                 contentContainerStyle={styles.listContent}
                 ListEmptyComponent={
                     <View style={styles.emptyContainer}>
-                        <Text style={[styles.emptyText, { color: colors.textSecondary }]}>No favorites yet.</Text>
+                        <Text style={[styles.emptyText, { color: colors.textSecondary }]}>{t('favorites.empty')}</Text>
                     </View>
                 }
             />
